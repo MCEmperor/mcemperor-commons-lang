@@ -7,19 +7,34 @@ import java.util.stream.Collectors;
 
 /**
  * The Integers class contains a set of static methods which make calculating with and getting properties from
- integers convenient.
+ * integers convenient.
+ * 
  * @author Maurits de Jong
- * @version 1.2
  * @since 2015-03-16
  */
 public class Integers {
 	
+	/**
+	 * Private constructor, for this is a utility class.
+	 */
 	private Integers() { }
 	
+	/**
+	 * Converts an int[] to a List&lt;Integer&gt;.
+	 * 
+	 * @param ints The array to convert.
+	 * @return A List&lt;Integer&gt; with the integers.
+	 */
 	public static List<Integer> boxed(int[] ints) {
 		return Arrays.stream(ints).boxed().collect(Collectors.toList());
 	}
 	
+	/**
+	 * Converts a List&lt;Integer&gt; to an int[].
+	 * 
+	 * @param ints A list with Integer objects.
+	 * @return An int[] with the integers.
+	 */
 	public static int[] unboxed(List<Integer> ints) {
 		return ints.stream()
 			.mapToInt(i -> i)
