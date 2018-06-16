@@ -1,18 +1,30 @@
 package nl.mcemperor.commons.lang.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * The IntegerUtils class contains a set of static methods which make calculating with and getting properties from
- * integers convenient.
+ * The Integers class contains a set of static methods which make calculating with and getting properties from
+ integers convenient.
  * @author Maurits de Jong
  * @version 1.2
  * @since 2015-03-16
  */
-public class IntegerUtils {
+public class Integers {
 	
-	private IntegerUtils() { }
+	private Integers() { }
+	
+	public static List<Integer> boxed(int[] ints) {
+		return Arrays.stream(ints).boxed().collect(Collectors.toList());
+	}
+	
+	public static int[] unboxed(List<Integer> ints) {
+		return ints.stream()
+			.mapToInt(i -> i)
+			.toArray();
+	}
 	
 	/**
 	 * Gets the width of the given long. The width is the number of digits of the given number. The additive inversion
@@ -35,7 +47,7 @@ public class IntegerUtils {
 	 * @return An array with the digits.
 	 */
 	public static List<Integer> getDigits(int number) {
-		int width = IntegerUtils.getWidth(number);
+		int width = Integers.getWidth(number);
 		List<Integer> digits = new ArrayList<>();
 		for (int i = 0; i < width; i++) {
 			int div = (int) Math.pow(10, width - (i + 1));
