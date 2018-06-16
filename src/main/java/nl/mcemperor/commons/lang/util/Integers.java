@@ -44,6 +44,7 @@ public class Integers {
 	/**
 	 * Gets the width of the given long. The width is the number of digits of the given number. The additive inversion
 	 * sign (minus sign), if applicable, increases the width by 1.
+	 * 
 	 * @param value An long.
 	 * @return The width of the given long.
 	 */
@@ -57,7 +58,8 @@ public class Integers {
 	}
 	
 	/**
-	 * Gets all digits of a number as an <code>List&lt;Integer&gt;</code>.
+	 * Gets all digits of a number as an {@code List&lt;Integer&gt;}.
+	 * 
 	 * @param number The number to get the digits from.
 	 * @return An array with the digits.
 	 */
@@ -75,6 +77,7 @@ public class Integers {
 	
 	/**
 	 * Try to parse the given str as an integer. If it fails, then return the default value.
+	 * 
 	 * @param str The string to parse.
 	 * @param defaultValue The default value.
 	 * @return The new value of the integer.
@@ -90,6 +93,7 @@ public class Integers {
 	
 	/**
 	 * Converts an int array to a byte array, typecasting each int to a byte.
+	 * 
 	 * @param array The int array to convert.
 	 * @return The resulting byte array.
 	 */
