@@ -12,13 +12,13 @@ import java.util.stream.IntStream;
 import nl.mcemperor.commons.lang.MalformedInputException;
 
 /**
- * The StringUtils class is a utility class containing various string processing methods.
+ * The Strings class is a utility class containing various string processing methods.
  *
  * @author Maurits de Jong
  * @version 3.3.1.2
  * @since 2012-01-01
  */
-public class StringUtils {
+public class Strings {
 	
 	public interface TextWrapper<T> {
 		
@@ -32,7 +32,7 @@ public class StringUtils {
 
 	public static final int NORMALIZE_PATH = 8;
 	
-	private StringUtils() { }
+	private Strings() { }
 
 	/**
 	 * Counts the number of occurences of {@code needle} in {@code haystack}.
@@ -216,7 +216,7 @@ public class StringUtils {
 	 * @return A string with the concatenated array elements.
 	 */
 	public static <T> String join(List<T> array, String glue) {
-		return StringUtils.join(array, glue, "", "");
+		return Strings.join(array, glue, "", "");
 	}
 	
 	/**
@@ -228,7 +228,7 @@ public class StringUtils {
 	 * @return A string with the concatenated array elements.
 	 */
 	public static <T> String join(List<T> array, String glue, TextWrapper<T> textWrapper) {
-		return StringUtils.join(array, glue, "", "", textWrapper);
+		return Strings.join(array, glue, "", "", textWrapper);
 	}
 	
 	/**

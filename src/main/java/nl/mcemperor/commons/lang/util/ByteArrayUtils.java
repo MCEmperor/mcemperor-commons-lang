@@ -56,6 +56,6 @@ public class ByteArrayUtils {
 			str.append((r & div) > 0 ? '1' : '0');
 			div <<= 1;
 		}
-		return StringUtils.reverse(str.toString());
+		return Strings.reverse(str.toString());
 	}
 }

@@ -119,6 +119,6 @@ public class Version implements Comparable<Version> {
 	 */
 	@Override
 	public String toString() {
-		return StringUtils.join(this.components.toArray(), ".");
+		return Strings.join(this.components.toArray(), ".");
 	}
 }
