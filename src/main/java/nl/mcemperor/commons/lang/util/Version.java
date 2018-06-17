@@ -15,7 +15,6 @@ import nl.mcemperor.commons.lang.stream.Streams;
  * The Version class represents a version with multiple version components, for example {@code 2.3.5}.
  *
  * @author Maurits de Jong
- * @version 1.2.0
  * @since 2015-03-26
  */
 public class Version implements Comparable<Version> {
@@ -27,6 +26,7 @@ public class Version implements Comparable<Version> {
 	
 	/**
 	 * Constructs a Version instance with the given version number components.
+	 * 
 	 * @param version The version components.
 	 */
 	public Version(int... version) {
@@ -46,6 +46,7 @@ public class Version implements Comparable<Version> {
 	
 	/**
 	 * Constructs a Version instance with the given version.
+	 * 
 	 * @param version The version number as a string.
 	 */
 	public Version(String version) {
@@ -56,6 +57,7 @@ public class Version implements Comparable<Version> {
 	
 	/**
 	 * Checks if this object is equal to the given object.
+	 * 
 	 * @param o The object to compare.
 	 * @return Whether this instance is equal to the given object.
 	 */
@@ -68,6 +70,7 @@ public class Version implements Comparable<Version> {
 	
 	/**
 	 * Returns the hash code for this object.
+	 * 
 	 * @return The hash code as an int.
 	 */
 	@Override
@@ -79,6 +82,7 @@ public class Version implements Comparable<Version> {
 	
 	/**
 	 * Compares this version with the given version.
+	 * 
 	 * @param o The version to compare this version with.
 	 * @return {@code 0} if the versions are equal, {@code -1} if this version is smaller (or lower) than the given
 	 * version, and {@code 1} otherwise.
@@ -103,6 +107,7 @@ public class Version implements Comparable<Version> {
 	
 	/**
 	 * Increments the version number at the given position and resets the following version components.
+	 * 
 	 * @param position The position of the component to increment. The position must be between {@code 0} and {@code
 	 * versionComponents - 1} inclusive.
 	 * @return A new Version with the upgrade
@@ -115,6 +120,7 @@ public class Version implements Comparable<Version> {
 	
 	/**
 	 * Returns a textual representation of the version number.
+	 * 
 	 * @return The version number as a string.
 	 */
 	@Override

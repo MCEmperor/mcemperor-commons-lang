@@ -18,7 +18,7 @@ public class Longs {
 	 */
 	private Longs() { }
 	
-		/**
+	/**
 	 * Converts a long[] to a List&lt;Long&gt;.
 	 * 
 	 * @param longs The array to convert.

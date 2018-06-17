@@ -6,7 +6,6 @@ import java.util.Arrays;
  * Byte array utilities.
  *
  * @author Maurits de Jong
- * @version 1.0.1
  * @since 2012-07-01
  */
 public class ByteArrayUtils {
@@ -18,6 +17,7 @@ public class ByteArrayUtils {
 
 	/**
 	 * Returns an array with {@code count} elemens, each element having the specified value.
+	 * 
 	 * @param count The length of the array.
 	 * @param value The value of each array element.
 	 * @return A new byte array.
@@ -32,6 +32,7 @@ public class ByteArrayUtils {
 	
 	/**
 	 * Converts the given byte array into a hexadecimal represention.
+	 * 
 	 * @param bytes The bytes to display as a hex-string.
 	 * @return A hexadecimal string representing the byte array.
 	 */
@@ -45,6 +46,7 @@ public class ByteArrayUtils {
 
 	/**
 	 * Returns a binary string representation of the given byte.
+	 * 
 	 * @param b The byte to display.
 	 * @return The byte as a binary string.
 	 */

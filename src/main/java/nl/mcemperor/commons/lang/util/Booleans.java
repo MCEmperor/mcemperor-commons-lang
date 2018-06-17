@@ -4,8 +4,7 @@ package nl.mcemperor.commons.lang.util;
  * The Booleans class contains a set of static methods which make calculating with and getting properties from booleans
  * convenient.
  *
- * @author mauri
- * @version 0.0.0
+ * @author Maurits de Jong
  * @since 2018-06-16
  */
 public class Booleans {

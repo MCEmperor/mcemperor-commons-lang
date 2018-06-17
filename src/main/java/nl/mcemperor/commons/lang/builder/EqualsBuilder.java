@@ -4,15 +4,15 @@ import java.util.Objects;
 import java.util.function.Function;
 
 /**
- * The EqualsBuilder class eases writing {@code equals()} methods within classes.<br>
- * The {@code equals()} method is often implemented as first casting the object to the desired type, and, if successful,
- * checking for each field if it is "equal to" the corresponding field of the given object, using the {@code equals()}
- * method of the field, or using the {@code Objects.equals()} method in the {@code java.util} package. However, this
- * yields often boilerplate code, obscuring the real implementation of the {@code equals()} method.<br>
- * The EqualsBuilder class addresses this problem by deferring this code to this EqualsBuilder class. Upon creating an
- * instance of this class, the types of the two given objects are checked for compatibility. Then, the {@code test()}
+ * The EqualsBuilder class eases writing {@code equals} methods within classes.<br>
+ * The {@code equals} method is often implemented as first casting the object to the desired type, and, if successful,
+ * checking for each field if it is "equal to" the corresponding field of the given object, using the {@code equals}
+ * method of the field, or using the {@code Objects::equals} method in the {@code java.util} package. However, this
+ * yields often boilerplate code, obscuring the real implementation of the {@code equals} method.<br>
+ * The EqualsBuilder class addresses this problem by deferring this code to this EqualsBuilder. Upon creating an
+ * instance of this class, the types of the two given objects are checked for compatibility. Then, the {@code test}
  * methods can be called to pass fields or methods be included in the equality. At last, calling {@code isEqual()}
- * yields the final result, which can be returned by the implementing {@code equals()} method.<br><br>
+ * yields the final result, which can be returned by the implementing {@code equals} method.<br><br>
  * 
  * Example usage:
  * <pre><code>
@@ -48,6 +48,7 @@ public class EqualsBuilder<T> {
 	/**
 	 * Creates a new EqualsBuilder from the given two classes. The first object passed is often the {@code this}
 	 * reference in whose class the EqualsBuilder is created.
+	 * 
 	 * @param o The first object, often passed in as {@code this}.
 	 * @param o2 The other object to compare the first object to, or {@code null}.
 	 */
@@ -68,6 +69,7 @@ public class EqualsBuilder<T> {
 	/**
 	 * Returns whether the result has already been determined or not. It is determined if the equality Boolean is not
 	 * null. With calling this method, the user is able to short-circuit a test when the result is already determined.
+	 * 
 	 * @return Whether the result is defined.
 	 */
 	private boolean result() {
@@ -81,6 +83,7 @@ public class EqualsBuilder<T> {
 	 * The method can be called using static method reference. For instance, if some class {@code Foo} has a method
 	 * {@code getBar()} returning the object's {@code bar} property, then a call to {@code test()} could look like this:
 	 * {@code test(Foo::getBar)}.
+	 * 
 	 * @param function The function to get properties of the passed objects.
 	 * @return This EqualsBuilder to enable method call chaining.
 	 */
@@ -95,6 +98,7 @@ public class EqualsBuilder<T> {
 	
 	/**
 	 * Returns the final result of whether the two compared objects are equal.
+	 * 
 	 * @return Whether the two objects are equal.
 	 */
 	public final boolean isEqual() {
