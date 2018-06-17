@@ -45,23 +45,17 @@ public class VersionTest {
 	
 	@Test
 	public void testUpgradeDeeperLevel() {
-		Version v = new Version(1, 8, 0);
-		v = v.upgrade(3);
+		Version v1 = new Version(1, 8, 0);
+		Version v2 = v1.upgrade(3);
 		
-		assertEquals(4, v.getComponents().size());
-		assertEquals((Integer) 1, v.getComponents().get(0));
-		assertEquals((Integer) 8, v.getComponents().get(1));
-		assertEquals((Integer) 0, v.getComponents().get(2));
-		assertEquals((Integer) 1, v.getComponents().get(3));
+		assertEquals(new Version(1, 8, 0, 1), v2);
 	}
 	
 	@Test
 	public void testUpgradeShallowerLevel() {
-		Version v = new Version(1, 8, 5, 2);
-		v = v.upgrade(1);
+		Version v1 = new Version(1, 8, 5, 2);
+		Version v2 = v1.upgrade(1);
 		
-		assertEquals(2, v.getComponents().size());
-		assertEquals((Integer) 1, v.getComponents().get(0));
-		assertEquals((Integer) 9, v.getComponents().get(1));
+		assertEquals(new Version(1, 9), v2);
 	}
 }

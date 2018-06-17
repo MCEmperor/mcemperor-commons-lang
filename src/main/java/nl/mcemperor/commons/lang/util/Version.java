@@ -1,6 +1,5 @@
 package nl.mcemperor.commons.lang.util;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -38,10 +37,6 @@ public class Version implements Comparable<Version> {
 			.boxed()
 			.collect(Collectors.toList());
 		this.components = Collections.unmodifiableList(comps);
-	}
-
-	public List<Integer> getComponents() {
-		return new ArrayList<>(this.components);
 	}
 	
 	/**
