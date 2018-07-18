@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import nl.mcemperor.commons.lang.MalformedInputException;
 
 /**
@@ -31,8 +32,6 @@ public class Strings {
 	public static final int NORMALIZE_SPACE_TO_UNDERSCORE = 4;
 
 	public static final int NORMALIZE_PATH = 8;
-
-	private static final String SPLIT_RETAINING_DELIMITER = "((?<=%1$s)|(?=%1$s))";
 
 	private Strings() { }
 
@@ -722,8 +721,7 @@ public class Strings {
 	}
 
 	public static String chunkToString(String string, int chunkSize, String glue) {
-		List<String> parts = chunk(string, chunkSize);
-		return join(parts, glue);
+		return join(chunk(string, chunkSize), glue);
 	}
 
 	public static String firstToUppercase(String str) {
@@ -922,9 +920,17 @@ public class Strings {
 	 *
 	 * @param string The string to split.
 	 * @param delimiter The delimiting regular expression.
-	 * @return An array of strings yielded by splitting the input string around matches of the given regular expression.
+	 * @return A list with strings yielded by splitting the input string around matches of the given regular expression.
 	 */
-	public static String[] splitRetainingDelimiter(String string, String delimiter) {
-		return string.split(String.format(SPLIT_RETAINING_DELIMITER, delimiter));
+	public static List<String> splitRetainingDelimiter(String string, String delimiter) {
+		Matcher m = Pattern.compile(delimiter).matcher(string);
+		Stream.Builder<String> b = Stream.builder();
+		int lastPos = 0;
+		while (m.find()) {
+			b.add(string.substring(lastPos, m.start())).add(m.group());
+			lastPos = m.end();
+		}
+		b.add(string.substring(lastPos));
+		return b.build().collect(Collectors.toList());
 	}
 }
