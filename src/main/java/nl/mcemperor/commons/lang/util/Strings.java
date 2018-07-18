@@ -19,11 +19,11 @@ import nl.mcemperor.commons.lang.MalformedInputException;
  * @since 2012-01-01
  */
 public class Strings {
-	
+
 	public interface TextWrapper<T> {
-		
+
 		String toString(T element);
-		
+
 	}
 
 	public static final int NORMALIZE_NEWLINES = 2;
@@ -31,7 +31,9 @@ public class Strings {
 	public static final int NORMALIZE_SPACE_TO_UNDERSCORE = 4;
 
 	public static final int NORMALIZE_PATH = 8;
-	
+
+	private static final String SPLIT_RETAINING_DELIMITER = "((?<=%1$s)|(?=%1$s))";
+
 	private Strings() { }
 
 	/**
@@ -80,7 +82,7 @@ public class Strings {
 		}
 		return count;
 	}
-	
+
 	/**
 	 * Counts the number of subsequent characters equal to the character denoted in {@code c} at the start of the
 	 * string.
@@ -91,7 +93,7 @@ public class Strings {
 	public static int countCharsAtStart(String str, char c) {
 		return countCharsAtBoundary(str, c, true);
 	}
-	
+
 	/**
 	 * Counts the number of subsequent characters equal to the character denoted in {@code c} at the end of the string.
 	 * @param str The string to check.
@@ -101,7 +103,7 @@ public class Strings {
 	public static int countCharsAtEnd(String str, char c) {
 		return countCharsAtBoundary(str, c, false);
 	}
-	
+
 	/**
 	 * Counts the number of subsequent characters equal to the character denoted in {@code c} at the start or end of the
 	 * string.
@@ -117,7 +119,7 @@ public class Strings {
 		Matcher m = p.matcher(str);
 		return (m.matches() ? m.group(1).length() : 0);
 	}
-	
+
 	/**
 	 * Checks whether the given String {@code str} contains the given character.
 	 * @param str The string to search in.
@@ -132,7 +134,7 @@ public class Strings {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Inserts a character into string.
 	 * @param str The source string to insert a string to.
@@ -195,7 +197,7 @@ public class Strings {
 	public static <T> String join(T[] array, String glue) {
 		return join(Arrays.asList(array), glue);
 	}
-	
+
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them.
 	 * @param <T> The type of CharSequences.
@@ -207,7 +209,7 @@ public class Strings {
 	public static <T> String join(T[] array, String glue, TextWrapper<T> textWrapper) {
 		return join(Arrays.asList(array), glue, textWrapper);
 	}
-	
+
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them.
 	 * @param <T> The type of objects inside the array.
@@ -218,7 +220,7 @@ public class Strings {
 	public static <T> String join(List<T> array, String glue) {
 		return Strings.join(array, glue, "", "");
 	}
-	
+
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them.
 	 * @param <T> The type of objects inside the array.
@@ -230,7 +232,7 @@ public class Strings {
 	public static <T> String join(List<T> array, String glue, TextWrapper<T> textWrapper) {
 		return Strings.join(array, glue, "", "", textWrapper);
 	}
-	
+
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them, first concatenating the {@code
 	 * startDelimiter} and {@code endDelimiter} to the element.
@@ -262,7 +264,7 @@ public class Strings {
 	public static <T> String join(List<T> array, String glue, String startDelimiter, String endDelimiter) {
 		return join(array, glue, startDelimiter, endDelimiter, null);
 	}
-	
+
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them, first concatenating the {@code
 	 * startDelimiter} and {@code endDelimiter} to the element.
@@ -296,11 +298,11 @@ public class Strings {
 				return buffer.toString();
 		}
 	}
-	
+
 	public static String join(char... chars) {
 		return new String(chars);
 	}
-	
+
 	/**
 	 * Gets pieces from a delimited string. This method acts almost in the same manner as {@code String.split(String)},
 	 * but this method supports different starting and ending delimiters.
@@ -397,7 +399,7 @@ public class Strings {
 		positions.add(-1);
 		delimiters.forEach(t -> positions.addAll(getDelimitingPositions(str, t, escapeSequence)));
 		positions.add(str.length() - 1);
-		
+
 		List<Integer> array = positions.stream()
 			.sorted()
 			.collect(Collectors.toList());
@@ -440,7 +442,7 @@ public class Strings {
 		chops.add(start >= str.length() ? "" : str.substring(start));
 		return chops;
 	}
-	
+
 	/**
 	 * Pads an integer.
 	 * @param i The integer to pad.
@@ -450,7 +452,7 @@ public class Strings {
 	public static String pad(int i, int minimum) {
 		return pad((long) i, minimum);
 	}
-	
+
 	/**
 	 * Pads a long.
 	 * @param l The long to pad.
@@ -460,7 +462,7 @@ public class Strings {
 	public static String pad(long l, int minimum) {
 		return pad("" + l, minimum, '0');
 	}
-	
+
 	/**
 	 * Pads a char.
 	 * @param c The character to pad.
@@ -470,7 +472,7 @@ public class Strings {
 	public static String pad(char c, int minimum) {
 		return pad(String.valueOf(c), minimum);
 	}
-	
+
 	/**
 	 * Pads a string.
 	 * @param str The string to pad.
@@ -714,16 +716,16 @@ public class Strings {
 		}
 		return chunks;
 	}
-	
+
 	public static String chunkToString(String string, int chunkSize) {
 		return chunkToString(string, chunkSize, "\n");
 	}
-	
+
 	public static String chunkToString(String string, int chunkSize, String glue) {
 		List<String> parts = chunk(string, chunkSize);
 		return join(parts, glue);
 	}
-	
+
 	public static String firstToUppercase(String str) {
 		String[] words = str.split(" ");
 		StringBuilder sb = new StringBuilder();
@@ -785,7 +787,7 @@ public class Strings {
 	public static boolean isUppercase(String string, Locale locale) {
 		return string.equals(string.toUpperCase(locale));
 	}
-	
+
 	/**
 	 * Calculates whether the given word is a palindrome.
 	 * @param word The word to check.
@@ -909,5 +911,20 @@ public class Strings {
 	 */
 	public static String substring(String str, int beginIndex, int endIndex) {
 		return str.substring(Math.min(beginIndex, str.length()), Math.min(endIndex, str.length()));
+	}
+
+	/**
+	 * Splits the given {@code string} by the given {@code delimiter}, keeping the delimiters as part of the result. If
+	 * the input string starts or ends with the given delimiter, then the first or last element of the resulting array
+	 * contains the delimiter. If the source string contains multiple consecutive delimiters, then these delimiters are
+	 * all present in the resulting array. Note that, unlike {@code String.split}, <em>no empty strings are placed into
+	 * the resulting array</em>.
+	 *
+	 * @param string The string to split.
+	 * @param delimiter The delimiting regular expression.
+	 * @return An array of strings yielded by splitting the input string around matches of the given regular expression.
+	 */
+	public static String[] splitRetainingDelimiter(String string, String delimiter) {
+		return string.split(String.format(SPLIT_RETAINING_DELIMITER, delimiter));
 	}
 }
