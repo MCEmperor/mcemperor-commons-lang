@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -939,5 +940,18 @@ public class Strings {
 		}
 		b.add(string.substring(lastPos));
 		return b.build().collect(Collectors.toList());
+	}
+
+	/**
+	 * Returns this string if it is not null, the given default value otherwise. If both the input string and the
+	 * default value are null, then a {@code NullPointerException} is thrown.
+	 *
+	 * @param string The string to test.
+	 * @param defaultValue The value to return if the input string is {@code null}.
+	 * @return The resulting non-null string.
+	 * @throws NullPointerException If both the input string and the given default value are {@code null}.
+	 */
+	public static String nonNull(String string, String defaultValue) {
+		return (string == null ? string : Objects.requireNonNull(defaultValue));
 	}
 }
