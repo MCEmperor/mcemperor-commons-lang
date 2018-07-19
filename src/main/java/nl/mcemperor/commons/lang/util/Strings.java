@@ -943,6 +943,16 @@ public class Strings {
 	}
 
 	/**
+	 * Returns this string if it is not null, an empty string otherwise.
+	 *
+	 * @param string The string to test.
+	 * @return The resulting non-null string.
+	 */
+	public static String nonNull(String string) {
+		return nonNull(string, "");
+	}
+
+	/**
 	 * Returns this string if it is not null, the given default value otherwise. If both the input string and the
 	 * default value are null, then a {@code NullPointerException} is thrown.
 	 *
@@ -952,6 +962,6 @@ public class Strings {
 	 * @throws NullPointerException If both the input string and the given default value are {@code null}.
 	 */
 	public static String nonNull(String string, String defaultValue) {
-		return (string == null ? string : Objects.requireNonNull(defaultValue));
+		return (string != null ? string : Objects.requireNonNull(defaultValue));
 	}
 }
