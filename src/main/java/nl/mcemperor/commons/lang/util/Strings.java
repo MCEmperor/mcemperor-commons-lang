@@ -912,11 +912,18 @@ public class Strings {
 	}
 
 	/**
-	 * Splits the given {@code string} by the given {@code delimiter}, keeping the delimiters as part of the result. If
-	 * the input string starts or ends with the given delimiter, then the first or last element of the resulting array
-	 * contains the delimiter. If the source string contains multiple consecutive delimiters, then these delimiters are
-	 * all present in the resulting array. Note that, unlike {@code String.split}, <em>no empty strings are placed into
-	 * the resulting array</em>.
+	 * Splits a string by the given delimiter, keeping the delimiters as part of the result. The resulting list contains
+	 * the delimiters as separate elements.<br>
+	 * This method guarantees that for <em>n</em> delimiters, the list counts <em>2 * n + 1</em> elements, and each
+	 * element <em>e<sub>i=0</sub></em> &hellip; <em>e<sub>i=n&minus;1</sub></em> where <em>i % 2 == 1</em>, contains
+	 * the delimiter. Consequently, multiple consecutive delimiters in the string will yield a list with an empty
+	 * element between those delimiters. Splitting an empty string yields a list with a single element.<br><br>
+	 *
+	 * The splitting process works from left to right. Delimiters cannot overlap, so substrings otherwise treated as
+	 * delimiters in an isolated context, may be treated as a normal string. For instance, the string {@code bbqwqwqwcc}
+	 * counts two matches of the delimiter string {@code qwqw}, one starting at zero-indexed position 2 and one at
+	 * position 4. However, because they overlap, they are not present as two separate delimiters in the resulting list.
+	 * Instead it yields the list {@code "bb", "qwqw", "qwcc"}.
 	 *
 	 * @param string The string to split.
 	 * @param delimiter The delimiting regular expression.
