@@ -10,21 +10,21 @@ public class HashCodeBuilderTest {
 
 	@Test
 	public void testNullConstructor() {
-		int hashCode = new HashCodeBuilder<>(null)
-			.code();
+		new HashCodeBuilder<>(null)
+			.get();
 	}
-	
+
 	@Test
 	public void testNullConstructorWithNullHashCode() {
-		int hashCode = new HashCodeBuilder<>(null)
-			.hash(t -> null)
-			.code();
+		new HashCodeBuilder<>(null)
+			.add(t -> null)
+			.get();
 	}
-	
+
 	@Test
 	public void test() {
-		int hashCode = new HashCodeBuilder<>("a")
-			.hash(t -> t.hashCode())
-			.code();
+		new HashCodeBuilder<>("a")
+			.add(String::hashCode)
+			.get();
 	}
 }

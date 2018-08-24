@@ -17,15 +17,15 @@ import nl.mcemperor.commons.lang.stream.Streams;
  * @since 2015-03-26
  */
 public class Version implements Comparable<Version> {
-	
+
 	/**
 	 * The version number components.
 	 */
 	private final List<Integer> components;
-	
+
 	/**
 	 * Constructs a Version instance with the given version number components.
-	 * 
+	 *
 	 * @param version The version components.
 	 */
 	public Version(int... version) {
@@ -38,10 +38,10 @@ public class Version implements Comparable<Version> {
 			.collect(Collectors.toList());
 		this.components = Collections.unmodifiableList(comps);
 	}
-	
+
 	/**
 	 * Constructs a Version instance with the given version.
-	 * 
+	 *
 	 * @param version The version number as a string.
 	 */
 	public Version(String version) {
@@ -49,10 +49,10 @@ public class Version implements Comparable<Version> {
 			.mapToInt(Integer::valueOf)
 			.toArray());
 	}
-	
+
 	/**
 	 * Checks if this object is equal to the given object.
-	 * 
+	 *
 	 * @param o The object to compare.
 	 * @return Whether this instance is equal to the given object.
 	 */
@@ -62,22 +62,22 @@ public class Version implements Comparable<Version> {
 			.test(t -> t.components)
 			.isEqual();
 	}
-	
+
 	/**
 	 * Returns the hash code for this object.
-	 * 
+	 *
 	 * @return The hash code as an int.
 	 */
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder<>(this)
-			.hash(t -> t.components)
-			.code();
+			.add(t -> t.components)
+			.get();
 	}
-	
+
 	/**
 	 * Compares this version with the given version.
-	 * 
+	 *
 	 * @param o The version to compare this version with.
 	 * @return {@code 0} if the versions are equal, {@code -1} if this version is smaller (or lower) than the given
 	 * version, and {@code 1} otherwise.
@@ -91,7 +91,7 @@ public class Version implements Comparable<Version> {
 		for (int i = 0; i < max; i++) {
 			int valueOfThis = (i < this.components.size() ? this.components.get(i) : 0);
 			int valueOfOther = (i < o.components.size() ? o.components.get(i) : 0);
-			
+
 			int compare = valueOfThis - valueOfOther;
 			if (compare != 0) {
 				return compare;
@@ -99,10 +99,10 @@ public class Version implements Comparable<Version> {
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * Increments the version number at the given position and resets the following version components.
-	 * 
+	 *
 	 * @param position The position of the component to increment. The position must be between {@code 0} and {@code
 	 * versionComponents - 1} inclusive.
 	 * @return A new Version with the upgrade
@@ -112,10 +112,10 @@ public class Version implements Comparable<Version> {
 			.map(i -> (i < this.components.size() ? this.components.get(i) : 0) + Booleans.toInt(position == i))
 			.toArray());
 	}
-	
+
 	/**
 	 * Returns a textual representation of the version number.
-	 * 
+	 *
 	 * @return The version number as a string.
 	 */
 	@Override
