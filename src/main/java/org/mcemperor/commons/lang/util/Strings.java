@@ -34,10 +34,14 @@ public class Strings {
 
 	public static final int NORMALIZE_PATH = 8;
 
+	/**
+	 * Private constructor, because this class is a utility class.
+	 */
 	private Strings() { }
 
 	/**
 	 * Counts the number of occurences of {@code needle} in {@code haystack}.
+	 *
 	 * @param haystack The haystack to search in.
 	 * @param needle The needle to search for.
 	 * @return The number of occurences of {@code needle} in {@code haystack}.
@@ -50,6 +54,7 @@ public class Strings {
 	 * Counts the number of occurences of {@code needle} in {@code haystack} and also includes doubles. Doubles occur if
 	 * {@code needle} has a sequence with two equal characters.<br>
 	 * For example, if the string "blaaaaahblah" is being searched for the occurence of "aa", then it will return 4.
+	 *
 	 * @param haystack The haystack to search in.
 	 * @param needle The needle to search for.
 	 * @return The number of occurences of {@code needle} in {@code haystack}.
@@ -64,6 +69,7 @@ public class Strings {
 	 * {@code overlap} set to {@code false}, the whole occurence of {@code needle} is consumed.<br>
 	 * For example, if the string "blaaaaahblah" is being searched for the occurence of {@code aa}, then with {@code
 	 * overlap} set to {@code false} it will return 2, while if {@code overlap} set to {@code true} it will return 4.
+	 *
 	 * @param haystack The haystack to search in.
 	 * @param needle The needle to search for.
 	 * @param doubles Whenever to search for doubles.
@@ -86,6 +92,7 @@ public class Strings {
 	/**
 	 * Counts the number of subsequent characters equal to the character denoted in {@code c} at the start of the
 	 * string.
+	 *
 	 * @param str The string to check.
 	 * @param c The character to search for at the end of the string.
 	 * @return The number of occurrences.
@@ -96,6 +103,7 @@ public class Strings {
 
 	/**
 	 * Counts the number of subsequent characters equal to the character denoted in {@code c} at the end of the string.
+	 *
 	 * @param str The string to check.
 	 * @param c The character to search for at the end of the string.
 	 * @return The number of occurrences.
@@ -107,6 +115,7 @@ public class Strings {
 	/**
 	 * Counts the number of subsequent characters equal to the character denoted in {@code c} at the start or end of the
 	 * string.
+	 *
 	 * @param str The string to check.
 	 * @param c The character to search for at the end of the string.
 	 * @param start Whether to search at the start (if {@code true}) or end (if {@code false}) of the string.
@@ -122,6 +131,7 @@ public class Strings {
 
 	/**
 	 * Checks whether the given String {@code str} contains the given character.
+	 *
 	 * @param str The string to search in.
 	 * @param c The char to search for.
 	 * @return Whether the given char is found.
@@ -137,6 +147,7 @@ public class Strings {
 
 	/**
 	 * Inserts a character into string.
+	 *
 	 * @param str The source string to insert a string to.
 	 * @param position The position at which the string is being inserted.
 	 * @param insert The character to insert.
@@ -148,6 +159,7 @@ public class Strings {
 
 	/**
 	 * Inserts a string into another string.
+	 *
 	 * @param str The source string to insert a string to.
 	 * @param position The position at which the string is being inserted.
 	 * @param insert The string to insert.
@@ -159,6 +171,7 @@ public class Strings {
 
 	/**
 	 * Removes a character from a string.
+	 *
 	 * @param str The string to remove a character from.
 	 * @param offset The position to remove the character from.
 	 * @return The remaining string from which a character is taken.
@@ -169,6 +182,7 @@ public class Strings {
 
 	/**
 	 * Removes a sequence of characters from a string.
+	 *
 	 * @param str The string to remove characters from.
 	 * @param position The position to start removing characters from.
 	 * @param length The length of the string to remove.
@@ -180,6 +194,7 @@ public class Strings {
 
 	/**
 	 * Checks whether a string is numeric or not.
+	 *
 	 * @param string The input string.
 	 * @return Whether this string is numeric.
 	 */
@@ -189,6 +204,7 @@ public class Strings {
 
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them.
+	 *
 	 * @param <T> The type of CharSequences.
 	 * @param array The array to use.
 	 * @param glue The glue to insert among the elements.
@@ -200,6 +216,7 @@ public class Strings {
 
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them.
+	 *
 	 * @param <T> The type of CharSequences.
 	 * @param array The array to use.
 	 * @param glue The glue to insert among the elements.
@@ -212,6 +229,7 @@ public class Strings {
 
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them.
+	 *
 	 * @param <T> The type of objects inside the array.
 	 * @param array The array to use.
 	 * @param glue The glue to insert among the elements.
@@ -223,6 +241,7 @@ public class Strings {
 
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them.
+	 *
 	 * @param <T> The type of objects inside the array.
 	 * @param array The array to use.
 	 * @param glue The glue to insert among the elements.
@@ -236,6 +255,7 @@ public class Strings {
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them, first concatenating the {@code
 	 * startDelimiter} and {@code endDelimiter} to the element.
+	 *
 	 * @param <T> The type of CharSequences.
 	 * @param array The array to use.
 	 * @param glue The glue to insert among the elements.
@@ -252,6 +272,7 @@ public class Strings {
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them, first concatenating the
 	 * {@code startDelimiter} and {@code endDelimiter} to the element.
+	 *
 	 * @param <T> The type of CharSequences.
 	 * @param array The array to use.
 	 * @param glue The glue to insert among the elements.
@@ -268,6 +289,7 @@ public class Strings {
 	/**
 	 * Concatenates all elements of an array with {@code glue} between them, first concatenating the {@code
 	 * startDelimiter} and {@code endDelimiter} to the element.
+	 *
 	 * @param <T> The type of CharSequences.
 	 * @param array The array to use.
 	 * @param glue The glue to insert among the elements.
@@ -306,6 +328,7 @@ public class Strings {
 	/**
 	 * Gets pieces from a delimited string. This method acts almost in the same manner as {@code String.split(String)},
 	 * but this method supports different starting and ending delimiters.
+	 *
 	 * @param haystack The haystack to search for.
 	 * @param startDelimiter The starting delimiter of each part.
 	 * @param endDelimiter The ending delimiter of each part.
@@ -347,6 +370,7 @@ public class Strings {
 
 	/**
 	 * Gets all positions of the given {@code needle} inside {@code haystack}.
+	 *
 	 * @param haystack The haystack to search in.
 	 * @param needle The needle to search for.
 	 * @param escapeChar The escape character.
@@ -377,6 +401,7 @@ public class Strings {
 	/**
 	 * Splits the given {@code string} by the delimiters denoted in {@code delimiters}, leaving the delimiters as part
 	 * of the preceding substring.
+	 *
 	 * @param string The string to split.
 	 * @param delimiters The delimiters.
 	 * @return The splitted string.
@@ -388,6 +413,7 @@ public class Strings {
 	/**
 	 * Splits the given {@code string} by the delimiters denoted in {@code delimiters}, leaving the delimiters as part
 	 * of the preceding substring.
+	 *
 	 * @param str The string to split.
 	 * @param delimiters The delimiters.
 	 * @param escapeSequence The sequence where the delimiters can be escaped.
@@ -414,6 +440,7 @@ public class Strings {
 
 	/**
 	 * Splits a string {@code str} by the given separator, preserving the separator as match in the returning array.
+	 *
 	 * @author Cletus
 	 * @param str The string to split.
 	 * @param separator The separator to use.
@@ -425,6 +452,7 @@ public class Strings {
 
 	/**
 	 * Splits a string {@code str} by the given separator, preserving the separator as match in the returning array.
+	 *
 	 * @author Cletus
 	 * @param str The string to split.
 	 * @param separator The separator to use.
@@ -445,6 +473,7 @@ public class Strings {
 
 	/**
 	 * Pads an integer.
+	 *
 	 * @param i The integer to pad.
 	 * @param minimum The minimal number of characters.
 	 * @return A string with the given number padded with zeros.
@@ -455,6 +484,7 @@ public class Strings {
 
 	/**
 	 * Pads a long.
+	 *
 	 * @param l The long to pad.
 	 * @param minimum The minimal number of characters.
 	 * @return A string with the given number padded with zeros.
@@ -465,6 +495,7 @@ public class Strings {
 
 	/**
 	 * Pads a char.
+	 *
 	 * @param c The character to pad.
 	 * @param minimum The minimal number of characters.
 	 * @return A string with the given number padded with zeros.
@@ -475,6 +506,7 @@ public class Strings {
 
 	/**
 	 * Pads a string.
+	 *
 	 * @param str The string to pad.
 	 * @param minimum The minimal number of characters.
 	 * @return A string with the given string padded with spaces.
@@ -485,6 +517,7 @@ public class Strings {
 
 	/**
 	 * Pads the given string until the string has a minimum length of {@code minimum}, using the given character.
+	 *
 	 * @param str The string to pad.
 	 * @param minimum The minimum number of characters the string will contain.
 	 * @param ch The padding character.
@@ -496,6 +529,7 @@ public class Strings {
 
 	/**
 	 * Pads the given string until the string has a minimum length of {@code minimum}, using the given character.
+	 *
 	 * @param str The string to pad.
 	 * @param minimum The minimum number of characters the string will contain.
 	 * @param ch The padding character.
@@ -518,6 +552,7 @@ public class Strings {
 	 * Pads the given string on the left side, until the string has a minimum length of {@code minimum}, using the
 	 * given character.<br>
 	 * This is an alias of {@code pad(String str, int minimum, char ch)}.
+	 *
 	 * @param str The string to pad.
 	 * @param minimum The minimum number of characters the string will contain.
 	 * @param ch The padding character.
@@ -530,6 +565,7 @@ public class Strings {
 	/**
 	 * Pads the given string on the right side, until the string has a minimum length of {@code minimum}, using the
 	 * given {@code ch}.
+	 *
 	 * @param str The string to pad.
 	 * @param minimum The minimum number of characters the string will contain.
 	 * @param ch The padding character.
@@ -541,6 +577,7 @@ public class Strings {
 
 	/**
 	 * Repeats the specified character a number of times.
+	 *
 	 * @param ch The character to repeat.
 	 * @param count The number of times the character should be repeated.
 	 * @return A string containing the result.
@@ -551,6 +588,7 @@ public class Strings {
 
 	/**
 	 * Repeats a string a number of times.
+	 *
 	 * @param str The string to repeat.
 	 * @param count The number of times the string should be repeated.
 	 * @return The resulting repeated string.
@@ -565,6 +603,7 @@ public class Strings {
 
 	/**
 	 * Reverses the specified string. 'Maurits' becomes 'stiruaM'.
+	 *
 	 * @param string The string to reverse.
 	 * @return The reversed string.
 	 */
@@ -577,6 +616,7 @@ public class Strings {
 	/**
 	 * Trims all consecutive characters specified with {@code character} on the left side of {@code string}
 	 * and returns the trimmed string.
+	 *
 	 * @param string The string to trim.
 	 * @param character The character to cut off.
 	 * @return A trimmed string.
@@ -588,6 +628,7 @@ public class Strings {
 	/**
 	 * Trims all consecutive characters, as long as it is one of the characters specified in {@code chars}, on the
 	 * left side of {@code string} and returns the trimmed string.
+	 *
 	 * @param string The string to trim.
 	 * @param chars A string containing all characters to cut off.
 	 * @return A trimmed string.
@@ -620,6 +661,7 @@ public class Strings {
 	/**
 	 * Trims all consecutive characters specified with {@code character} on the right side of {@code string}
 	 * and returns the trimmed string.
+	 *
 	 * @param string The string to trim.
 	 * @param character The character to cut off.
 	 * @return A trimmed string.
@@ -631,6 +673,7 @@ public class Strings {
 	/**
 	 * Trims all consecutive characters, as long as it is one of the characters specified in {@code chars}, on the
 	 * right side of {@code string} and returns the trimmed string.
+	 *
 	 * @param string The string to trim.
 	 * @param chars A string containing all characters to cut off.
 	 * @return A trimmed string.
@@ -646,6 +689,7 @@ public class Strings {
 	/**
 	 * Trims all consecutive characters specified with {@code character} on both sides of {@code string} and
 	 * returns the trimmed string.
+	 *
 	 * @param string The string to trim.
 	 * @param character The character to cut off.
 	 * @return A trimmed string.
@@ -657,6 +701,7 @@ public class Strings {
 	/**
 	 * Trims all consecutive characters, as long as it is one of the characters specified in {@code chars}, on both
 	 * sides of {@code string} and returns the trimmed string.
+	 *
 	 * @param string The string to trim.
 	 * @param chars A string containing all characters to cut off.
 	 * @return A trimmed string.
@@ -667,6 +712,7 @@ public class Strings {
 
 	/**
 	 * Makes a character compatible for use in a regular expression. That means that certain characters will be escaped.
+	 *
 	 * @param c The character to transform.
 	 * @return The character, escaped if needed.
 	 */
@@ -695,6 +741,7 @@ public class Strings {
 	/**
 	 * Takes {@code string} and splits it into pieces with a size of exactly {@code chunkSize}. The last chunk
 	 * might be smaller if there are no more characters to consume.
+	 *
 	 * @param string The string to chunk.
 	 * @param chunkSize The chunk size.
 	 * @return A string array with the pieces.
@@ -738,6 +785,7 @@ public class Strings {
 
 	/**
 	 * Gets a character from the specified string, or the default character if the given position is out of bounds.
+	 *
 	 * @param string The string to return the character from.
 	 * @param position The string index at which to extract the character from.
 	 * @param defaultChar The char to return if the given position is invalid for the given string.
@@ -749,6 +797,7 @@ public class Strings {
 
 	/**
 	 * Returns whether the given {@code string} contains only lowercase characters.
+	 *
 	 * @param string The input string.
 	 * @return Whether the input string contains only lowercase characters.
 	 */
@@ -759,6 +808,7 @@ public class Strings {
 	/**
 	 * Returns whether the given {@code string} contains only lowercase characters, using the rules of the given
 	 * locale.
+	 *
 	 * @param string The input string.
 	 * @param locale The locale to use as reference.
 	 * @return Whether the input string contains only lowercase characters.
@@ -769,6 +819,7 @@ public class Strings {
 
 	/**
 	 * Returns whether the given {@code string} contains only uppercase characters.
+	 *
 	 * @param string The input string.
 	 * @return Whether the input string contains only uppercase characters.
 	 */
@@ -779,6 +830,7 @@ public class Strings {
 	/**
 	 * Returns whether the given {@code string} contains only uppercase characters, using the rules of the given
 	 * locale.
+	 *
 	 * @param string The input string.
 	 * @param locale The locale to use as reference.
 	 * @return Whether the input string contains only uppercase characters.
@@ -789,6 +841,7 @@ public class Strings {
 
 	/**
 	 * Calculates whether the given word is a palindrome.
+	 *
 	 * @param word The word to check.
 	 * @return Whether the given word is a palindrome or not.
 	 */
@@ -808,6 +861,7 @@ public class Strings {
 
 	/**
 	 * Normalizes the string to a universal format. This method is often used for uniforming newlines.
+	 *
 	 * @param string The input string to be normalized.
 	 * @param scope The scope of what strength the normalization should have.
 	 * @return A new string containing the normalized text.
@@ -879,6 +933,7 @@ public class Strings {
 	 * Returns a new string that is a substring of this string. The substring begins with the character at the specified
 	 * index and extends to the end of this string. If the index lays beyond the end of the string, an empty string is
 	 * returned.
+	 *
 	 * @param string The string to get the substring from.
 	 * @param beginIndex The beginning index of the substring, inclusive.
 	 * @return The specified substring.
