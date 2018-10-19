@@ -24,7 +24,7 @@ import java.util.function.Function;
  *        return new EqualsBuilder&lt;&gt;(this, o)
  *            .test(super::equals)
  *            .test(YourClass::anotherField)
- *            .testIf((t, u) -> t.equalsIgnoreCase(u))
+ *            .testIf((t, u) -&gt; t.equalsIgnoreCase(u))
  *            .isEqual();
  *    }
  * </code></pre>
