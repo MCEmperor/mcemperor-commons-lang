@@ -18,16 +18,15 @@ import java.util.function.Function;
  * <br><br>
  *
  * Example usage:
- * <pre><code>
- *    &#64;Override
- *    public boolean equals(Object o) {
- *        return new EqualsBuilder&lt;&gt;(this, o)
- *            .test(super::equals)
- *            .test(YourClass::anotherField)
- *            .testIf((t, u) -&gt; t.equalsIgnoreCase(u))
- *            .isEqual();
- *    }
- * </code></pre>
+ *
+ * <pre>{@code  @Override
+ * public boolean equals(Object o) {
+ *     return new EqualsBuilder<>(this, o)
+ *         .test(super::equals)
+ *         .test(YourClass::anotherField)
+ *         .testIf((t, u) -> t.equalsIgnoreCase(u))
+ *         .isEqual();
+ * }}</pre>
  *
  * @author Maurits de Jong
  * @param <T> The type of the objects contained in the EqualsBuilder.
@@ -77,6 +76,19 @@ public class EqualsBuilder<T> {
 	}
 
 	/**
+	 * Static factory method to create a new EqualsBuilder from the given two objects. See {@link
+	 * #EqualsBuilder(Object, Object)} for more details.
+	 *
+	 * @param <T> The type of the objects contained in the EqualsBuilder.
+	 * @param o The first object, often passed in as {@code this}.
+	 * @param o2 The other object to compare the first object to, or {@code null}.
+	 * @return A new EqualsBuilder instance.
+	 */
+	public static <T> EqualsBuilder<T> of(T o, Object o2) {
+		return new EqualsBuilder<>(o, o2);
+	}
+
+	/**
 	 * Returns whether the result has already been determined or not. It is determined if the equality Boolean is not
 	 * null. With calling this method, the user is able to short-circuit a test when the result is already determined.
 	 *
@@ -113,6 +125,33 @@ public class EqualsBuilder<T> {
 	 */
 	public final EqualsBuilder<T> testIf(BiPredicate<T, T> predicate) {
 		if (!result() && !predicate.test(this.first, this.second)) {
+			this.equal = false;
+		}
+		return this;
+	}
+
+	/**
+	 * Applies the given BiPredicate to the two objects to be compared, after mapping both objects with the given
+	 * mapping function. The mapping function holds only for this method, that is, the actual objects to be compared are
+	 * not actually replaced.<br><br>
+	 *
+	 * For example, if the current object holds a {@code List<String>} names {@code strs}, and the list is to be
+	 * compared in an order-insensitive manner, the following code can be used:
+	 *
+	 * <pre>{@code  @Override
+	 * public boolean equals(Object o) {
+	 *     return EqualsBuilder.of(this, o)
+	 *         .testIfMapping(t -> strs.stream().sorted().collect(Collectors.toList()), Object::equals)
+	 *         .isEqual();
+	 * }}</pre>
+	 *
+	 * @param <U> The target type of the objects to be compared after the mapping.
+	 * @param mapper The mapping function applied before the comparision takes place.
+	 * @param predicate A BiPredicate to be applied to both objects to be compared, after mapping.
+	 * @return This EqualsBuilder to allow method call chaining.
+	 */
+	public final <U> EqualsBuilder<T> testIfMapping(Function<T, U> mapper, BiPredicate<U, U> predicate) {
+		if (!result() && !predicate.test(mapper.apply(this.first), mapper.apply(this.second))) {
 			this.equal = false;
 		}
 		return this;

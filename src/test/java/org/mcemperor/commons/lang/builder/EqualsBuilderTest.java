@@ -1,6 +1,9 @@
 package org.mcemperor.commons.lang.builder;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -53,5 +56,17 @@ public class EqualsBuilderTest {
 			.isEqual();
 
 		assertFalse(result);
+	}
+
+	@Test
+	public void testTestIfMapping() {
+		List<String> list1 = Arrays.asList("alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
+		List<String> list2 = Arrays.asList("foxtrot", "charlie", "alpha", "echo", "bravo", "delta");
+
+		boolean result = EqualsBuilder.of(list1, list2)
+			.testIfMapping(t -> t.stream().sorted().collect(Collectors.toList()), Objects::equals)
+			.isEqual();
+		
+		assertTrue(result);
 	}
 }
