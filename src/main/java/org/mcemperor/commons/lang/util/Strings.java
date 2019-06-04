@@ -583,7 +583,14 @@ public class Strings {
 	 * @return A string containing the result.
 	 */
 	public static String repeat(char ch, int count) {
-		return repeat(Character.toString(ch), count);
+		if (count < 0) {
+			throw new IllegalArgumentException("Count may not be negative");
+		}
+		char[] chars = new char[count];
+		for (int i = 0; i < count; i++) {
+			chars[i] = ch;
+		}
+		return String.valueOf(chars);
 	}
 
 	/**
@@ -594,7 +601,10 @@ public class Strings {
 	 * @return The resulting repeated string.
 	 */
 	public static String repeat(String str, int count) {
-		StringBuilder sb = new StringBuilder();
+		if (count < 0) {
+			throw new IllegalArgumentException("Count may not be negative");
+		}
+		StringBuilder sb = new StringBuilder(str.length() * count);
 		for (int i = 0; i < count; i++) {
 			sb.append(str);
 		}

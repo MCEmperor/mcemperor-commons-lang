@@ -7,17 +7,17 @@ package org.mcemperor.commons.lang.reflect;
  * @since 2017-10-10
  */
 public class ClassUtils {
-	
+
 	/**
 	 * A private constructor, because this is a utility class.
 	 */
 	private ClassUtils() { }
-	
+
 	/**
 	 * Whether the given class is primitive or not. The primitive types are {@code boolean}, {@code byte},
 	 * {@code short}, {@code int}, {@code long}, {@code char}, {@code float} and {@code double}. Their classes are
 	 * available through the class literal.
-	 * 
+	 *
 	 * @param clazz The class to inspect.
 	 * @return {@code true} if the given class represents a primitive type, {@code false} otherwise.
 	 */
@@ -32,12 +32,12 @@ public class ClassUtils {
 			clazz == float.class ||
 			clazz == double.class;
 	}
-	
+
 	/**
 	 * Whether the given type is a wrapper class. A wrapper class is a class to wrap one of the eight primitive data
 	 * types: {@code boolean}, {@code byte}, {@code short}, {@code int}, {@code long}, {@code character}, {@code float}
 	 * and {@code double}.
-	 * 
+	 *
 	 * @param clazz The class to inspect.
 	 * @return Whether the given class is a primitive wrapper class.
 	 */
@@ -52,11 +52,11 @@ public class ClassUtils {
 			clazz == Float.class ||
 			clazz == Double.class;
 	}
-	
+
 	/**
 	 * Returns the boxed type of the specified primitive type. If the specified class is not a primitive type, then that
 	 * particular class is simply returned.
-	 * 
+	 *
 	 * @param clazz The type of a primitive.
 	 * @return The corresponding wrapper type, or the specified class if that's not a primitive type.
 	 */
@@ -89,10 +89,10 @@ public class ClassUtils {
 			return clazz;
 		}
 	}
-	
+
 	/**
 	 * Returns the unboxed type of the specified primitive wrapper type.
-	 * 
+	 *
 	 * @param clazz The type of a primitive wrapper.
 	 * @return The corresponding primitive type.
 	 */
@@ -124,5 +124,17 @@ public class ClassUtils {
 		else {
 			return clazz;
 		}
+	}
+
+	/**
+	 * Assumes that the specified object is of the target type.
+	 *
+	 * @param <T> The target type of the specified object.
+	 * @param object The object to convert to the target type.
+	 * @return The input object.
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> T juggle(Object object) {
+		return (T) object;
 	}
 }
