@@ -45,6 +45,18 @@ public class HashCodeBuilder<T> {
 	}
 
 	/**
+	 * Static factory method to create a new HashCodeBuilder from the given object. See {@link #HashCodeBuilder(Object,
+	 * Object)} for more details.
+	 *
+	 * @param <T> The type of object contained in the HashCodeBuilder.
+	 * @param o The object to create a hash code from.
+	 * @return A HashCodeBuilder instance.
+	 */
+	public static <T> HashCodeBuilder<T> of(T o) {
+		return new HashCodeBuilder<>(o);
+	}
+
+	/**
 	 * Applies the given function to the object to inspect and get its add get using the {@code hashCode()} method.<br>
 	 * For instance, if some class {@code Foo} has a field {@code bar}, then a call to {@code add} could look like this:
 	 * {@code add(t -> t.bar)}.
