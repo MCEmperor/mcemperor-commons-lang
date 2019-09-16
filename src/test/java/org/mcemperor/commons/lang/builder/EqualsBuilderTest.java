@@ -15,20 +15,28 @@ import org.junit.Test;
 public class EqualsBuilderTest {
 
 	@Test
-	public void testDoubleNullConstructor() {
+	public void testConstructorWithSingleNull() {
+		assertFalse(new EqualsBuilder<>(null, "a").isEqual());
+		assertFalse(new EqualsBuilder<>("q", null).isEqual());
+	}
+
+	@Test
+	public void testConstructorWithDoubleNull() {
+		assertTrue(new EqualsBuilder<>(null, null).isEqual());
+	}
+
+	@Test
+	public void testConstructorWithDoubleNullAndThenToString() {
 		boolean result = new EqualsBuilder<>(null, null)
+			.test(t -> t.toString())
 			.isEqual();
 
 		assertTrue(result);
 	}
 
 	@Test
-	public void testDoubleNullConstructorWithNull() {
-		boolean result = new EqualsBuilder<>(null, null)
-			.test(t -> t.toString())
-			.isEqual();
-
-		assertTrue(result);
+	public void testConstructorWithNotInstanceOf() {
+		assertFalse(new EqualsBuilder<>("z", 23).isEqual());
 	}
 
 	@Test
@@ -59,14 +67,26 @@ public class EqualsBuilderTest {
 	}
 
 	@Test
-	public void testTestIfMapping() {
+	public void testTestIfMappingWithListOfSameElements() {
 		List<String> list1 = Arrays.asList("alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
 		List<String> list2 = Arrays.asList("foxtrot", "charlie", "alpha", "echo", "bravo", "delta");
 
 		boolean result = EqualsBuilder.of(list1, list2)
 			.testIfMapping(t -> t.stream().sorted().collect(Collectors.toList()), Objects::equals)
 			.isEqual();
-		
+
 		assertTrue(result);
+	}
+
+	@Test
+	public void testTestIfMappingWithListOfDifferentElements() {
+		List<String> list1 = Arrays.asList("alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
+		List<String> list2 = Arrays.asList("quebec", "tango", "romeo", "papa", "uniform", "sierra");
+
+		boolean result = EqualsBuilder.of(list1, list2)
+			.testIfMapping(t -> t.stream().sorted().collect(Collectors.toList()), Objects::equals)
+			.isEqual();
+
+		assertFalse(result);
 	}
 }
